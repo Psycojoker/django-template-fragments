@@ -22,7 +22,7 @@ Exemple: `object_list.html` will be accessible in the `fragments` object like th
 
 # Verbatim tag
 
-*You to put `fragments` in you installed apps in settings.py for this to work*.
+**You have to put `fragments` in you installed apps in settings.py for this to work**.
 
 I've extracted code from the dev branch of django 1.5 to allow the use of the
 [verbatim](https://docs.djangoproject.com/en/dev/ref/templates/builtins/#verbatim)
