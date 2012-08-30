@@ -47,3 +47,9 @@ Example from the doc:
     {% verbatim myblock %}
         Avoid template rendering via the {% verbatim %}{% endverbatim %} block.
     {% endverbatim myblock %}
+
+# Ignored files extensions
+
+By default `django-template-fragments` ignores every files that ends with one of those: `.pyc` `.swo` `.swp` `~`
+
+You can specify your own list by defining `FRAGMENTS_IGNORED_FILE_TYPES` in you `settings.py`.
