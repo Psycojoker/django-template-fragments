@@ -27,18 +27,23 @@ def fragments(request):
         ignored_files = ('.swp', '.swo', '.pyc', '~')
 
     fragments = []
-    for fragment in os.listdir(fragments_dir):
-        if any(map(lambda x: fragment.endswith(x), ignored_files)):
-            continue
-        key = ".".join(fragment.split(".")[:-1])
-        fragment_content = open(os.path.join(fragments_dir, fragment), "r").read()
+    for root, dirnames, filenames in os.walk(fragments_dir):
+        print root, dirnames, filenames
+        for fragment in filenames:
+            print "-->", fragment
+            if any(map(lambda x: fragment.endswith(x), ignored_files)):
+                continue
+            key = ".".join(fragment.split(".")[:-1])
+            if root != fragments_dir:
+                key = "_".join([os.path.split(root)[1], key])
+            fragment_content = open(os.path.join(root, fragment), "r").read()
 
-        if fragment.endswith(".haml") and hamlpy is not None:
-            fragment_content = hamlpy.Compiler().process(fragment_content)
+            if fragment.endswith(".haml") and hamlpy is not None:
+                fragment_content = hamlpy.Compiler().process(fragment_content)
 
-        context = Context(RequestContext(request))
-        fragments.append({
-            "name": key,
-            "content": Template1_5(fragment_content).render(context).encode("Utf-8").__repr__()
-        })
+            context = Context(RequestContext(request))
+            fragments.append({
+                "name": key,
+                "content": Template1_5(fragment_content).render(context).encode("Utf-8").__repr__()
+            })
     return HttpResponse(Template(template).render(Context({"fragments": fragments})), content_type="text/javascript")
