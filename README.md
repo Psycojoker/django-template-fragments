@@ -1,12 +1,12 @@
 # Introduction
 
-Often, when you use a javascript client side framework (aka backbone/ember/angular/wathever), you'll want small templates to render your page. The problem starts when:
+Often, when you use a client-side javascript framework (e.g. backbone/ember/angular/wathever), you'll want small templates to render your page. The problem starts when:
 * you still want to be able to use django template engine
 * and you want a cool place to define your small templates.
 
-Those are the 2 problems that this django app try to solve. It also comes with helper functionnalities for those kind of templates, like the `verbatim` templatetags extracted from the django 1.5 dev code that allow you to define a zone where django won't interpret anything to avoid conflicts with templates languages like `mustache.js`.
+Those are the 2 issues that this django app tries to address. It also comes with helper functionalities for those kind of templates, like the `verbatim` templatetags from django 1.5 dev code that allows you to define a zone where django won't interpret anything to avoid conflicts with template languages like `mustache.js`.
 
-With it, you define all you small templates in the same directory and you'll be able to access them in the `fragments` javascript object that contains the (rendered by django) templates.
+With it, you define all your small templates in the same directory and you'll be able to access them in the `fragments` javascript object that contains the (rendered by django) templates.
 
 # Installation
 
@@ -32,13 +32,13 @@ And somewhere in your base template
 
     <script type="text/javascript" src="{% url fragments %}" />
 
-This will give you a javascript object `fragments` that is a object that contains all your fragments, the key is the filename of the fragment without the extention.
+This will give you a javascript object `fragments` containing all your fragments, the key is the filename of the fragment without the extension.
 
-Exemple: `object_list.html` will be accessible in the `fragments` object like this: `fragments.object_list`
+Example: `object_list.html` will be accessible in the `fragments` object like this: `fragments.object_list`
 
-If you put the fragment in a subdir in the `FRAGMENTS_DIR`, the key will be the filename without its extensions joined with the subdir path where the `/` are replaced by `_`.
+If you put the fragment in a subdir in the `FRAGMENTS_DIR`, the key will be the filename without its extension joined with the subdir path where the `/` are replaced by `_`.
 
-Not clear? Here is an example: the file `FRAGMENTS_DIR/one/two/three.html` will be accessible atthe key `one_two_three`.
+Not clear? Here is an example: the file `FRAGMENTS_DIR/one/two/three.html` will be accessible at the key `one_two_three`.
 
 # HamlPy support
 
@@ -46,12 +46,12 @@ If you have [HamlPy](https://github.com/jessemiller/HamlPy) installed and that y
 
 # Verbatim tag
 
-**You have to put `fragments` in you installed apps in settings.py for this to work**.
+**You have to put `fragments` in your installed apps in settings.py for this to work**.
 
-I've extracted code from the dev branch of django 1.5 to allow the use of the
+I've taken code from the dev branch of django 1.5 to allow the use of the
 [verbatim](https://docs.djangoproject.com/en/dev/ref/templates/builtins/#verbatim)
-templatetags to avoid conflicts between django template syntaxe and other
-template engine syntaxe (eg: mustache).
+templatetags to avoid conflicts between django template syntax and other
+template engine syntax (e.g. mustache).
 
 Example:
 
@@ -62,7 +62,7 @@ Example:
     {{ wont_be_interpredted }}
     {% endverbatim %}
 
-You can also designate a specifif closing tag like describe in django doc.
+You can also choose a specific closing tag as described in django documentation.
 
 Example from the doc:
 
@@ -76,4 +76,4 @@ Example from the doc:
 
 By default `django-template-fragments` ignores every files that ends with one of those: `.pyc` `.swo` `.swp` `~`
 
-You can specify your own list by defining `FRAGMENTS_IGNORED_FILE_TYPES` in you `settings.py`.
+You can specify your own list by defining `FRAGMENTS_IGNORED_FILE_TYPES` in your `settings.py`.
