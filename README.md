@@ -20,6 +20,10 @@ This will give you a javascript object `fragments` that is a object that contain
 
 Exemple: `object_list.html` will be accessible in the `fragments` object like this: `fragments.object_list`
 
+# HamlPy support
+
+If you have [HamlPy](https://github.com/jessemiller/HamlPy) installed and that your fragment name ends with `.haml`, django-template-fragments will take it into account and use HamlPy to generate the html.
+
 # Verbatim tag
 
 **You have to put `fragments` in you installed apps in settings.py for this to work**.
