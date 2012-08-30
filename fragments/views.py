@@ -25,7 +25,6 @@ def fragments(request):
     for fragment in os.listdir(fragments_dir):
         if any(map(lambda x: fragment.endswith(x), ignored_files)):
             continue
-        print "-->", fragment
         key = ".".join(fragment.split(".")[:-1])
         fragment_content = open(os.path.join(fragments_dir, fragment), "r").read()
         context = Context(RequestContext(request))
