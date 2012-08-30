@@ -20,7 +20,7 @@ I like to define my `FRAGMENTS_DIR` like this:
 
     FRAGMENTS_DIR = os.path.join(SUBPROJECT_PATH, "fragments")
 
-This will set it to the directory `project_name/fragments` (will your `settings.py` is in `project_name/project_name/settings.py`).
+This will set it to the directory `project_name/fragments` (where your `settings.py` is in `project_name/project_name/settings.py`).
 
 Next, write some small html snippets in this dir.
 
@@ -30,7 +30,7 @@ Then add something like this to your `urls.py`
 
 And somewhere in your base template
 
-    <script type="text/javascript" src="{% url fragments %}">
+    <script type="text/javascript" src="{% url fragments %}" />
 
 This will give you a javascript object `fragments` that is a object that contains all your fragments, the key is the filename of the fragment without the extention.
 
