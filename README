@@ -10,6 +10,16 @@ With it, you define all your small templates in the same directory and you'll be
 
 # Installation
 
+From pip:
+
+    pip install django-template-fragments
+
+From setup.py:
+
+    git clone git://github.com/Psycojoker/django-template-fragments.git
+    cd django-template-fragments
+    python setup.py install
+
 Create a dir where you want to store your fragments, then add `FRAGMENTS_DIR` to your `settings.py`, it must be an absolute path.
 
 I like to define my `FRAGMENTS_DIR` like this:
