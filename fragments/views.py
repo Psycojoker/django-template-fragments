@@ -1,7 +1,7 @@
 import os
 from django.http import HttpResponse
 from django.conf import settings
-from django.template import Template, Context
+from django.template import Template, Context, RequestContext
 
 template = """
 fragments = {
@@ -16,5 +16,10 @@ def fragments(request):
     fragments = []
     for fragment in os.listdir(fragments_dir):
         key = ".".join(fragment.split(".")[:-1])
-        fragments.append({"name": key, "content": Template(open(os.path.join(fragments_dir, fragment), "r").read()).render(Context()).encode("Utf-8").__repr__()})
+        fragment_content = open(os.path.join(fragments_dir, fragment), "r").read()
+        context = Context(RequestContext(request))
+        fragments.append({
+            "name": key,
+            "content": Template(fragment_content).render(context).encode("Utf-8").__repr__()
+        })
     return HttpResponse(Template(template).render(Context({"fragments": fragments})), content_type="text/javascript")
