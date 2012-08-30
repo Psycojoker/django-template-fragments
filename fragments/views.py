@@ -15,8 +15,17 @@ fragments = {
 
 def fragments(request):
     fragments_dir = settings.FRAGMENTS_DIR
+
+    if hasattr(settings, "FRAGMENTS_IGNORED_FILE_TYPES"):
+        ignored_files = settings.FRAGMENTS_IGNORED_FILE_TYPES
+    else:
+        ignored_files = ('.swp', '.swo', '.pyc', '~')
+
     fragments = []
     for fragment in os.listdir(fragments_dir):
+        if any(map(lambda x: fragment.endswith(x), ignored_files)):
+            continue
+        print "-->", fragment
         key = ".".join(fragment.split(".")[:-1])
         fragment_content = open(os.path.join(fragments_dir, fragment), "r").read()
         context = Context(RequestContext(request))
