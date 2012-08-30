@@ -5,6 +5,11 @@ from django.template import Template, Context, RequestContext
 
 from dirty import Template1_5
 
+try:
+    from hamlpy import hamlpy
+except ImportError:
+    hamlpy = None
+
 template = """
 fragments = {
 {% for fragment in fragments %}
@@ -27,6 +32,10 @@ def fragments(request):
             continue
         key = ".".join(fragment.split(".")[:-1])
         fragment_content = open(os.path.join(fragments_dir, fragment), "r").read()
+
+        if fragment.endswith(".haml") and hamlpy is not None:
+            fragment_content = hamlpy.Compiler().process(fragment_content)
+
         context = Context(RequestContext(request))
         fragments.append({
             "name": key,
