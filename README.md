@@ -36,6 +36,10 @@ This will give you a javascript object `fragments` that is a object that contain
 
 Exemple: `object_list.html` will be accessible in the `fragments` object like this: `fragments.object_list`
 
+If you put the fragment in a subdir in the `FRAGMENTS_DIR`, the key will be the filename without its extensions joined with the subdir path where the `/` are replaced by `_`.
+
+Not clear? Here is an example: the file `FRAGMENTS_DIR/one/two/three.html` will be accessible atthe key `one_two_three`.
+
 # HamlPy support
 
 If you have [HamlPy](https://github.com/jessemiller/HamlPy) installed and that your fragment name ends with `.haml`, django-template-fragments will take it into account and use HamlPy to generate the html.
