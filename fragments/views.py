@@ -28,9 +28,7 @@ def fragments(request):
 
     fragments = []
     for root, dirnames, filenames in os.walk(fragments_dir):
-        print root, dirnames, filenames
         for fragment in filenames:
-            print "-->", fragment
             if any(map(lambda x: fragment.endswith(x), ignored_files)):
                 continue
             key = ".".join(fragment.split(".")[:-1])
