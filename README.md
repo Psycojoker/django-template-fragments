@@ -1,3 +1,7 @@
+# Introduction
+
+Objectif: to be used with a javascript mvc client-side framework.
+
 # Installation
 
 Create a dir where you want to store your fragments, then add `FRAGMENTS_DIR` to your `settings.py`, it must be an absolute path.
