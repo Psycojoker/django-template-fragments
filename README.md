@@ -4,7 +4,7 @@ Often, when you use a javascript client side framework (aka backbone/ember/angul
 * you still want to be able to use django template engine
 * and you want a cool place to define your small templates.
 
-Those are the 2 problems that this django app try to solve.
+Those are the 2 problems that this django app try to solve. It also comes with helper functionnalities for those kind of templates, like the `verbatim` templatetags extracted from the django 1.5 dev code that allow you to define a zone where django won't interpret anything to avoid conflicts with templates languages like `mustache.js`.
 
 With it, you define all you small templates in the same directory and you'll be able to access them in the `fragments` javascript object that contains the (rendered by django) templates.
 
