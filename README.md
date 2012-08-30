@@ -1,6 +1,12 @@
 # Introduction
 
-Objectif: to be used with a javascript mvc client-side framework.
+Often, when you use a javascript client side framework (aka backbone/ember/angular/wathever), you'll want small templates to render your page. The problem starts when:
+* you still want to be able to use django template engine
+* and you want a cool place to define your small templates.
+
+Those are the 2 problems that this django app try to solve.
+
+With it, you define all you small templates in the same directory and you'll be able to access them in the `fragments` javascript object that contains the (rendered by django) templates.
 
 # Installation
 
