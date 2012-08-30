@@ -6,7 +6,17 @@ Objectif: to be used with a javascript mvc client-side framework.
 
 Create a dir where you want to store your fragments, then add `FRAGMENTS_DIR` to your `settings.py`, it must be an absolute path.
 
-Write some small html snippets in this dir.
+I like to define my `FRAGMENTS_DIR` like this:
+
+    import os
+    PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
+    SUBPROJECT_PATH = os.path.split(PROJECT_PATH)[0]
+
+    FRAGMENTS_DIR = os.path.join(SUBPROJECT_PATH, "fragments")
+
+This will set it to the directory `project_name/fragments` (will your `settings.py` is in `project_name/project_name/settings.py`).
+
+Next, write some small html snippets in this dir.
 
 Then add something like this to your `urls.py`
 
