@@ -42,6 +42,6 @@ def fragments(request):
             context = Context(RequestContext(request))
             fragments.append({
                 "name": key,
-                "content": Template1_5(fragment_content).render(context).encode("Utf-8").__repr__()
+                "content": Template1_5(fragment_content).render(context).encode("Utf-8").strip().__repr__()
             })
     return HttpResponse(Template(template).render(Context({"fragments": fragments})), content_type="text/javascript")
