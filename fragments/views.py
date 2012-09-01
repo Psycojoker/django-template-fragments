@@ -37,11 +37,11 @@ def fragments(request):
             fragment_content = open(os.path.join(root, fragment), "r").read()
 
             if fragment.endswith(".haml") and hamlpy is not None:
-                fragment_content = hamlpy.Compiler().process(fragment_content)
+                fragment_content = hamlpy.Compiler().process(fragment_content.decode("Utf-8"))
 
             context = Context(RequestContext(request))
             fragments.append({
                 "name": key,
-                "content": Template1_5(fragment_content).render(context).encode("Utf-8").strip().__repr__()
+                "content": Template1_5(fragment_content).render(context).strip().__repr__()[1:]
             })
     return HttpResponse(Template(template).render(Context({"fragments": fragments})), content_type="text/javascript")
