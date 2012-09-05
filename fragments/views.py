@@ -13,7 +13,7 @@ except ImportError:
 template = """
 fragments = {
 {% for fragment in fragments %}
-    {{ fragment.name }}: {{ fragment.content|safe }},
+    "{{ fragment.name }}": {{ fragment.content|safe }},
 {% endfor %}
 }
 """
