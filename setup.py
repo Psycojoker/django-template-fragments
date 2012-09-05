@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='django-template-fragments',
-    version='0.1.2',
+    version='0.1.3',
     author='Laurent Peuch',
     author_email='cortex@worlddomination.be',
     url='https://github.com/Psycojoker/django-template-fragments',
